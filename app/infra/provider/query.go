@@ -13,7 +13,7 @@ type QueryClientProvider struct {
 }
 
 // コンストラクタ
-func NewQueryClientProvider(connector connect.ServerConnector) (*QueryClientProvider, error) {
+func NewQueryClientProvider(connector connect.ServiceConnector) (*QueryClientProvider, error) {
 	if connect, err := connector.Connect(); err != nil {
 		return nil, err
 	} else {

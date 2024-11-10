@@ -1,6 +1,10 @@
 package provider
 
-import "github.com/Cassin01/samplepb/pb"
+import (
+	"cqrsclient/infra/connect"
+
+	"github.com/Cassin01/samplepb/pb"
+)
 
 // Commandクライアントプロバイダ
 type CommandClientProvider struct {
@@ -9,9 +13,10 @@ type CommandClientProvider struct {
 }
 
 // コンストラクタ
-func NewCommandClientProvider(connector connect.ServerConnector) (*CommandClientProvider, error) {
+func NewCommandClientProvider(connector connect.ServiceConnector) (*CommandClientProvider, error) {
 	// Command Serviceの接続
-	if connect, err := connector.Connect(); err != nil {
+	connect, err := connector.Connect()
+	if err != nil {
 		return nil, err
 	}
 

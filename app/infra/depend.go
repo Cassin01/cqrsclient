@@ -1,6 +1,11 @@
 package infra
 
-import "go.uber.org/fx"
+import (
+	"cqrsclient/infra/connect"
+	"cqrsclient/infra/provider"
+
+	"go.uber.org/fx"
+)
 
 // インフラストラクチャ層の依存定義
 var InfraDepend = fx.Options(

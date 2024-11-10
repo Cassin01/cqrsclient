@@ -79,13 +79,14 @@ func (ins *CommandHelper) DeleteCategory(ctx *gin.Context) {
 func (ins *CommandHelper) CreateProduct(ctx *gin.Context) {
 	var param pb.ProductUpParam
 	// JSON形式のリクエストパラメータをpb.ProductParamにマッピングする
-	if err != ctx.ShouldBindJSON(&param); err != nil {
+	if err := ctx.ShouldBindJSON(&param); err != nil {
 		ErrResp(ctx, err)
 		return
 	}
 
 	// Command ServiceのCreate()メソッドを実行する
-	if result, err := ins.provider.Product.Create(ctx, &param); err != nil {
+	result, err := ins.provider.Product.Create(ctx, &param)
+	if err != nil {
 		ErrResp(ctx, err)
 	}
 	if result.GetError() != nil { // エラーになった場合
@@ -106,7 +107,8 @@ func (ins *CommandHelper) UpdateProduct(ctx *gin.Context) {
 		return
 	}
 	// Command ServiceのUpdate()メソッドを実行する
-	if result, err := ins.provider.Product.Update(ctx, &param); err != nil {
+	result, err := ins.provider.Product.Update(ctx, &param)
+	if err != nil {
 		ErrResp(ctx, err)
 	}
 	if result.GetError() != nil { // エラーになった場合
@@ -120,14 +122,15 @@ func (ins *CommandHelper) UpdateProduct(ctx *gin.Context) {
 
 // 商品を削除する
 func (ins *CommandHelper) DeleteProduct(ctx *gin.Context) {
-	var param pb.ProductParam
+	var param pb.ProductUpParam
 	// JSON形式のリクエストパラメータをpb.ProductParamにマッピングする
 	if err := ctx.ShouldBindJSON(&param); err != nil {
 		ErrResp(ctx, err)
 		return
 	}
 	// Command ServiceのDelete()メソッドを実行する
-	if result, err := ins.provider.Product.Delete(ctx, &param); err != nil {
+	result, err := ins.provider.Product.Delete(ctx, &param)
+	if err != nil {
 		ErrResp(ctx, err)
 	}
 
