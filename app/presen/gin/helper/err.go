@@ -3,7 +3,7 @@ package helper
 import (
 	"net/http"
 
-	"github.com/fullness-MFurukawa/samplepb/pb"
+	"github.com/Cassin01/samplepb/pb"
 	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

@@ -6,7 +6,7 @@ import (
 
 	"cqrsclient/infra/provider"
 
-	"github.com/fullness-MFurukawa/samplepb/pb"
+	"github.com/Cassin01/samplepb/pb"
 	"github.com/gin-gonic/gin"
 	"google.golang.org/protobuf/types/known/emptypb"
 )
